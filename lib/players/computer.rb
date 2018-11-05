@@ -15,7 +15,7 @@ module Players
     move = ["1", "2", "3", "4", "5", "6", "7", "8", "9"].detect {|cell| !board.taken?(cell)}
   end
 
-  def winnig_move(board)
+  def winning_move(board)
     win_move = Game::WIN_COMBINATIONS.detect do |combo|
       board.cells[combo[0]] == token && board.cells[combo[1]] == token && board.valid_move?(combo[2]+1) ||
       board.cells[combo[1]] == token && board.cells[combo[2]] == token && board.valid_move?(combo[0]+1) ||
