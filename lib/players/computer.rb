@@ -15,7 +15,7 @@ module Players
   end
 
   def corners(board)
-    move = ["1", "3", "7", "9"].detect {|cell| !board.taken?(cell)}
+    move = ["1", "3", "7", "9"].detect {|cell| board.valid_move?(cell)}
   end
 
   def random_move(board)
