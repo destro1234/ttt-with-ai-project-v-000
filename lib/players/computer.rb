@@ -3,14 +3,8 @@ module Players
     attr_accessor :board
 
   def move(board)
-    move = nil
-    if !board.taken?("5")
-      move = "5"
-    elsif board.taken?("5")
-      move = corners(board)
-
-    else
-      winning_move(board)+1 || corners(board)
+    
+      winning_move(board)+1 || corners(board) || center(board)
     end
   end
 
@@ -32,7 +26,12 @@ module Players
     if win_move
       move = win_move.detect {|cell| board.valid_move?(cell+1)}
     end
+  end
 
+  def center(board)
+    if !board.taken?("5")
+      move = "5"
+    end
   end
 
 
