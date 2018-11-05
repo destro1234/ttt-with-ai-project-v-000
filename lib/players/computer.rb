@@ -4,7 +4,11 @@ module Players
 
   def move(board)
 
-      winning_move(board)+1 || corners(board) || center(board)
+      if winning_move != nil
+        winning_move(board)+1
+      else
+         corners(board) || center(board)
+       end
   end
 
   def corners(board)
