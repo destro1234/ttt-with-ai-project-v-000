@@ -42,7 +42,7 @@ module Players
 
       if block_move
         move = block_move.detect {|cell| board.valid_move?(cell+1)}
-      end
+    
     end
   end
 
