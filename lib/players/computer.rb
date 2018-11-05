@@ -3,9 +3,8 @@ module Players
     attr_accessor :board
 
   def move(board)
-    
+
       winning_move(board)+1 || corners(board) || center(board)
-    end
   end
 
   def corners(board)
