@@ -6,8 +6,10 @@ module Players
 
       if winning_move(board) != nil
         winning_move(board)+1
-      else
-         corners(board) || center(board)
+      elsif block?(board) != nil
+         block?(board)+1
+       else
+         center(board) || corners(board)
        end
   end
 
@@ -31,9 +33,30 @@ module Players
     end
   end
 
+  def block?(board)
+      block_move = Game::WIN_COMBINATIONS.detect do |combo|
+        board.cells[combo[0]] == opponent && board.cells[combo[1]] == opponent && board.valid_move?(combo[2]+1) ||
+        board.cells[combo[1]] == opponent && board.cells[combo[2]] == opponent && board.valid_move?(combo[0]+1) ||
+        board.cells[combo[2]] == opponent && board.cells[combo[0]] == opponent && board.valid_move?(combo[1]+1)
+      end
+
+      if block_move
+        move = block_move.detect {|cell| board.valid_move?(cell+1)}
+      end
+    end
+  end
+
   def center(board)
     if !board.taken?("5")
       move = "5"
+    end
+  end
+
+  def opponent
+    if token == "X"
+      "O"
+    else
+      "X"
     end
   end
 
