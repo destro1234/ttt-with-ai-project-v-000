@@ -9,7 +9,7 @@ module Players
       elsif block?(board) != nil
          block?(board)+1
        else
-         center(board) || corners(board)
+         center(board) || corners(board) || random_move(board)
        end
   end
 
