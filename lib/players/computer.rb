@@ -30,7 +30,7 @@ module Players
     end
 
     if win_move
-      move = combo.detect {|cell| board.valid_move?(cell+1)}
+      move = win_move.detect {|cell| board.valid_move?(cell+1)}
     end
 
   end
